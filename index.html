@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaVision AI – Environmental Monitor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo-area">
+                <h1>AquaVision <span class="ai-badge">AI</span></h1>
+                <p>Multi-Spectral Waste Detection & Recovery Engine</p>
+            </div>
+            <button id="btnHowToUseTop" class="btn-glow">User Guide & Architecture</button>
+        </header>
+
+        <main class="dashboard-grid">
+            <aside class="sidebar">
+                <section class="card glass">
+                    <h3>📁 Control Center</h3>
+                    <div class="upload-zone">
+                        <label for="folderInput" class="custom-file-upload">Load Drone Images</label>
+                        <input type="file" id="folderInput" webkitdirectory multiple />
+                    </div>
+                    <div class="action-btns">
+                        <button id="btnStart" class="btn primary">Start Analysis</button>
+                        <button id="btnReset" class="btn ghost">Reset</button>
+                    </div>
+                </section>
+
+                <section class="card glass status-card">
+                    <h3>📊 Live Diagnostics</h3>
+                    <div class="diag-item"><span>Identified Waste:</span><strong id="waste-type">--</strong></div>
+                    <div class="diag-item"><span>Acid Level (pH):</span><strong id="iot-ph">--</strong></div>
+                    <div class="diag-item"><span>Turbidity:</span><strong id="iot-turb">--</strong></div>
+                    <div class="diag-item"><span>Oxygen (DO):</span><strong id="iot-do">--</strong></div>
+                    <div class="remedy-container">
+                        <strong>Recovery Action:</strong>
+                        <p id="remedyText">Select imagery to begin...</p>
+                    </div>
+                </section>
+            </aside>
+
+            <section class="visual-feed">
+                <div class="feed-container glass">
+                    <div class="feed-header">Input: Raw Drone Feed</div>
+                    <div class="image-box"><img id="originalImage"><div class="placeholder">No Data</div></div>
+                </div>
+                <div class="feed-container glass">
+                    <div class="feed-header">Output: Spectral Waste Isolation</div>
+                    <div class="image-box"><canvas id="processedCanvas"></canvas><div class="placeholder">No Data</div></div>
+                    <div class="spectral-legend">
+                        <span class="dot red"></span> Chemical <span class="dot yellow"></span> Sewage <span class="dot cyan"></span> Healthy
+                    </div>
+                </div>
+            </section>
+
+            <section class="impact-footer">
+                <div class="panel glass remedy-panel">
+                    <h4>Immediate Safety Plan</h4>
+                    <p id="suggestionBox">Waiting for analysis...</p>
+                </div>
+                <div class="panel glass risk-panel">
+                    <h4>Ecological Risk of Inaction</h4>
+                    <p id="consequenceBox">Waiting for impact projection...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="howToUseModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content glass">
+            <h2>User Guide & System Logic</h2>
+            <p>This system uses <strong>Spectral Fingerprinting</strong> to detect water waste without a chemical lab.</p>
+            <ul>
+                <li><strong>Drone Feed:</strong> Upload standard RGB aerial imagery.</li>
+                <li><strong>Analysis:</strong> Our AI calculates pixel saturation vs. brightness to find pollutants.</li>
+                <li><strong>Waste Types:</strong> Red indicates industrial waste; Yellow indicates organic sewage.</li>
+                <li><strong>Remedies:</strong> Follow the voice-guided recovery plans instantly.</li>
+            </ul>
+            <button id="btnCloseModal" class="btn primary">Close Guide</button>
+        </div>
+    </div>
+
+    <canvas id="hiddenCanvas" class="hidden"></canvas>
+    <script src="script.js"></script>
+</body>
+</html>
